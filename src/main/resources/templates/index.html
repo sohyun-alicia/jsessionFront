@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+<button onclick="callWelcome()">welcome호출</button>
+<button onclick="callGuestOnly()">guestOnly호출</button>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+    <script th:inline="javascript">
+        function callWelcome() {
+
+            $.ajax({
+                type: 'GET',
+                url: 'http://localhost:8080/welcome',
+                crossDomain:true,
+                xhrFields:{
+                    withCredentials:true
+                },
+                success: function(res) {console.log(res)},
+                error: function(res) {console.log(res)},
+            });
+        }
+
+        function callGuestOnly() {
+
+            $.ajax({
+                type: 'GET',
+                url: 'http://localhost:8080/guestOnly',
+                xhrFields:{
+                    withCredentials:true
+                },
+                crossDomain: true,
+                success: function(res) {console.log(res)},
+                error: function(res) {console.log(res)}
+            });
+        }
+</script>
+</div>
+</body>
+</html>
